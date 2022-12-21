@@ -1,0 +1,23 @@
+---
+export interface Props {
+  title: string;
+  time: number;
+  lastWeekTime: string;
+}
+
+const { title, time, lastWeekTime } = Astro.props;
+---
+
+<div>
+  <h2>
+    {title}
+    <span>&rarr;</span>
+  </h2>
+  <p>
+    {time}
+  </p>
+  <p>
+    {lastWeekTime}
+  </p>
+</div>
+<style></style>
