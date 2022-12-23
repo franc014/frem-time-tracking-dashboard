@@ -8,16 +8,91 @@ export interface Props {
 const { title, time, lastWeekTime } = Astro.props;
 ---
 
-<div>
-  <h2>
-    {title}
-    <span>&rarr;</span>
-  </h2>
-  <p>
-    {time}
-  </p>
-  <p>
-    {lastWeekTime}
-  </p>
+<div class="item">
+  <div class="item-bg">
+    <!--  <img src="/" alt="" /> -->
+  </div>
+  <div class="item-body">
+    <header>
+      <span>Work</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+        ></path>
+      </svg>
+    </header>
+    <p>32hrs</p>
+    <p>Last Week - 36hrs</p>
+  </div>
 </div>
-<style></style>
+<style>
+  .item {
+    /* background-color: hsl(var(--tt-dark-blue)); */
+    /* padding: var(--size-5); */
+    display: flex;
+    flex-direction: column;
+    color: var(--gray-0);
+    font-weight: var(--font-weight-1);
+    height: 100%;
+    border-radius: var(--radius-3);
+    position: relative;
+  }
+
+  .item-bg {
+    background-color: hsl(var(--tt-light-red));
+    height: var(--size-10);
+    padding: var(--size-5);
+    border-radius: var(--radius-3);
+    position: absolute;
+    width: 100%;
+    opacity: 1;
+  }
+  .item-body {
+    padding: var(--size-5);
+    border-radius: var(--radius-3);
+    background-color: hsl(var(--tt-dark-blue));
+    margin-top: 20px;
+    position: absolute;
+    width: 100%;
+  }
+  /* .item::before {
+    content: " ";
+    background-color: honeydew;
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: var(--radius-3);
+    opacity: 0.4;
+    margin-top: -80px;
+  } */
+
+  header {
+    display: flex;
+    margin-bottom: var(--size-5);
+  }
+
+  p:first-of-type {
+    font-size: var(--font-size-6);
+    line-height: 1;
+    margin-bottom: var(--size-1);
+  }
+  p:last-of-type {
+    font-size: var(--font-size-0);
+    color: hsl(var(--tt-pale-blue));
+  }
+
+  header svg {
+    margin-left: auto;
+    width: var(--size-5);
+  }
+</style>

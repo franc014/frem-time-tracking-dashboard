@@ -43,11 +43,14 @@ import TimeCard from "../components/TimeCard.astro";
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr 1fr;
-    background-color: lightcoral;
     width: min(80%, 70%);
     width: calc(var(--size-15) + var(--size-15));
     /* margin-inline: auto; */
     gap: var(--size-5);
+  }
+  .dashboard-container div {
+    display: flex;
+    flex-direction: column;
   }
   .dashboard-container > div:first-child {
     grid-row: 1 / -1;
