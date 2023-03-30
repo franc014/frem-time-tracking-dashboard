@@ -6,27 +6,63 @@ import TimeCard from "../components/TimeCard.astro";
 
 <Layout title="Time Tracking Dashboard">
   <main>
-    <section class="dashboard-container">
+    <section class="dashboard-container" aria-label="Time Tracker Dashboard">
       <div>
-        <UserCard title="Jeremy Robson" time={0} lastWeekTime="5" />
+        <UserCard title="Jeremy Robson" />
       </div>
       <div>
-        <TimeCard title="Jeremy Robson" time={0} lastWeekTime="5" />
+        <TimeCard
+          title="Work"
+          time={32}
+          lastWeekTime={36}
+          cardIcon="icon-work.svg"
+          itemColor="light-red"
+        />
       </div>
       <div>
-        <TimeCard title="Jeremy Robson" time={0} lastWeekTime="5" />
+        <TimeCard
+          title="Play"
+          time={10}
+          lastWeekTime={8}
+          cardIcon="icon-play.svg"
+          itemColor="soft-blue"
+        />
       </div>
       <div>
-        <TimeCard title="Jeremy Robson" time={0} lastWeekTime="5" />
+        <TimeCard
+          title="Study"
+          time={4}
+          lastWeekTime={7}
+          cardIcon="icon-study.svg"
+          itemColor="light-red-study"
+        />
       </div>
       <div>
-        <TimeCard title="Jeremy Robson" time={0} lastWeekTime="5" />
+        <TimeCard
+          title="Excercise"
+          time={4}
+          lastWeekTime={5}
+          cardIcon="icon-exercise.svg"
+          itemColor="lime-green"
+        />
       </div>
       <div>
-        <TimeCard title="Jeremy Robson" time={0} lastWeekTime="5" />
+        <TimeCard
+          title="Social"
+          time={5}
+          lastWeekTime={10}
+          cardIcon="icon-social.svg"
+          itemColor="violet"
+        />
       </div>
       <div>
-        <TimeCard title="Jeremy Robson" time={0} lastWeekTime="5" />
+        <TimeCard
+          title="Self Care"
+          time={2}
+          lastWeekTime={2}
+          cardIcon="icon-self-care.svg"
+          itemColor="light-orange"
+        />
       </div>
     </section>
   </main>
@@ -34,7 +70,6 @@ import TimeCard from "../components/TimeCard.astro";
 
 <style>
   main {
-    background-color: lightgray;
     min-height: 100vh;
     display: grid;
     place-content: center;
@@ -45,15 +80,14 @@ import TimeCard from "../components/TimeCard.astro";
     grid-template-rows: 1fr 1fr;
     width: min(80%, 70%);
     width: calc(var(--size-15) + var(--size-15));
-    /* margin-inline: auto; */
     gap: var(--size-5);
   }
   .dashboard-container div {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
   .dashboard-container > div:first-child {
     grid-row: 1 / -1;
-    background-color: lightgoldenrodyellow;
   }
 </style>

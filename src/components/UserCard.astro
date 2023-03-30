@@ -1,28 +1,27 @@
 ---
 export interface Props {
   title: string;
-  time: number;
-  lastWeekTime: string;
 }
 
-const { title, time, lastWeekTime } = Astro.props;
+const { title } = Astro.props;
 ---
 
-<div class="user">
-  <div class="user-name">
+<section aria-labelledby="user-card" class="user">
+  <span hidden id="user-card">User Card</span>
+  <header class="user-name">
     <div class="user-image">
-      <img src="/image-jeremy.png" alt="User Image" />
+      <img src="/image-jeremy.png" alt="Jeremy Photo" />
     </div>
-    <p>Jeremy Robson</p>
-  </div>
+    <p>{title}</p>
+  </header>
   <div class="user-description">
-    <ul>
-      <li>Daily</li>
-      <li>Weekly</li>
-      <li>Monthly</li>
+    <ul aria-role="navigation">
+      <li><button>Daily</button></li>
+      <li><button aria-current="true">Weekly</button></li>
+      <li><button>Monthly</button></li>
     </ul>
   </div>
-</div>
+</section>
 <style>
   .user {
     background-color: hsl(var(--tt-dark-blue));
@@ -68,17 +67,22 @@ const { title, time, lastWeekTime } = Astro.props;
   }
 
   .user-description ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
   }
 
-  .user-description ul li {
-    font-size: var(--font-size-0);
-    padding-bottom: var(--size-2);
+  .user-description ul li button {
+    font-size: var(--font-size-1);
+    margin-bottom: var(--size-2);
     color: hsl(var(--tt-desaturated-blue));
+    background-color: transparent;
   }
-  .user-description ul li:hover {
+  .user-description ul li button:hover {
     cursor: pointer;
     color: var(--gray-0);
+  }
+
+  ul li button[aria-current="true"] {
+    color: white;
   }
 </style>
