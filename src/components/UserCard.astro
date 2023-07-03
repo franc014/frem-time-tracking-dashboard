@@ -14,13 +14,14 @@ const { title } = Astro.props;
     </div>
     <p>{title}</p>
   </header>
-  <div class="user-description">
-    <ul aria-role="navigation">
+  <nav class="time-navigation" aria-labelledby="time-navigation">
+    <span hidden id="time-navigation">Time Navigation</span>
+    <ul>
       <li><button>Daily</button></li>
       <li><button aria-current="true">Weekly</button></li>
       <li><button>Monthly</button></li>
     </ul>
-  </div>
+  </nav>
 </section>
 <style>
   .user {
@@ -32,6 +33,7 @@ const { title } = Astro.props;
     height: 100%;
     border-radius: var(--radius-3);
     font-weight: var(--font-weight-2);
+    margin-bottom: 2rem;
   }
   .user-name {
     background-color: hsl(var(--tt-blue));
@@ -52,12 +54,13 @@ const { title } = Astro.props;
     letter-spacing: var(--font-letterspacing-1);
     font-weight: var(--font-weight-1);
   }
-  .user-description {
+
+  .time-navigation {
     padding: var(--size-5);
   }
 
   .user-image {
-    width: var(--size-8);
+    width: var(--size-9);
     border-radius: var(--radius-round);
     border: 2px solid var(--gray-0);
     margin-bottom: var(--size-5);
@@ -66,18 +69,27 @@ const { title } = Astro.props;
     object-fit: auto;
   }
 
-  .user-description ul {
+  .time-navigation ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
   }
 
-  .user-description ul li button {
+  @media screen and (min-width: 832px) {
+    .time-navigation ul {
+      flex-direction: column;
+    }
+  }
+
+  .time-navigation ul li button {
     font-size: var(--font-size-1);
     margin-bottom: var(--size-2);
     color: hsl(var(--tt-desaturated-blue));
     background-color: transparent;
+    padding: 0;
   }
-  .user-description ul li button:hover {
+  .time-navigation ul li button:hover {
     cursor: pointer;
     color: var(--gray-0);
   }

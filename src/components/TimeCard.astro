@@ -16,6 +16,9 @@ const { title, time, lastWeekTime, cardIcon, itemColor } = Astro.props;
          --item-color: var(--tt-${itemColor})`}
   aria-label={`${title} Card`}
 >
+  <div class="item-decoration">
+    <img src={`/${cardIcon}`} alt="Work icon" />
+  </div>
   <div class="item-body">
     <header>
       <h2>{title}</h2>
@@ -34,8 +37,10 @@ const { title, time, lastWeekTime, cardIcon, itemColor } = Astro.props;
         ></path>
       </svg>
     </header>
-    <p>{time}hrs</p>
-    <p>Last Week - {lastWeekTime}hrs</p>
+    <footer>
+      <p>{time}hrs</p>
+      <p>Last Week - {lastWeekTime}hrs</p>
+    </footer>
   </div>
 </section>
 <style>
@@ -45,44 +50,46 @@ const { title, time, lastWeekTime, cardIcon, itemColor } = Astro.props;
     color: var(--gray-0);
     font-weight: var(--font-weight-2);
     border-radius: var(--radius-3);
-    background-color: lightpink;
+    margin-bottom: 2rem;
+    position: relative;
+    width: 100%;
+    z-index: 9999;
+    margin-top: 2rem;
+  }
+
+  .item:nth-child(-n + 3) {
+    margin-top: 2.5rem;
+  }
+
+  .item-decoration {
+    background-color: hsl(var(--item-color));
+    border-radius: var(--radius-3);
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    z-index: -20;
+    top: -40px;
+    display: flex;
+  }
+
+  .item-decoration img {
+    margin-left: auto;
+    display: inline-block;
+    padding: 0.2rem;
+    margin-right: 10px;
   }
 
   .item-body {
+    background-color: hsl(var(--tt-dark-blue));
     padding: var(--size-5);
     border-radius: var(--radius-3);
-    background-color: hsl(var(--tt-dark-blue));
-    /*  margin-top: 20px; */
-    position: absolute;
     width: 100%;
     bottom: 0;
-    height: 80%;
   }
 
-  .item::before {
-    content: "";
-    border-radius: var(--radius-3);
-    background-color: hsl(var(--item-color));
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 80%;
-    left: 0;
-    background-image: var(--card-image);
-    background-repeat: no-repeat;
-    background-position: top 0 right 10px;
-    background-size: 40px;
-    padding: 4rem;
-  }
-
-  header {
+  .item-body footer {
     display: flex;
-    margin-bottom: var(--size-2);
-  }
-  header h2 {
-    font-size: var(--font-size-1);
-    color: white;
-    font-weight: 100;
+    align-items: center;
   }
 
   p:first-of-type {
@@ -93,6 +100,47 @@ const { title, time, lastWeekTime, cardIcon, itemColor } = Astro.props;
   p:last-of-type {
     font-size: var(--font-size-0);
     color: hsl(var(--tt-pale-blue));
+    margin-left: auto;
+  }
+
+  @media screen and (min-width: 832px) {
+    .item-decoration {
+      background-color: hsl(var(--item-color));
+      border-radius: var(--radius-3);
+      width: 100%;
+      height: 50%;
+      position: absolute;
+      z-index: -20;
+      top: -40px;
+      display: flex;
+    }
+    .item-decoration img {
+      width: 60px;
+      height: 60px;
+    }
+    .item-body {
+      width: 100%;
+      bottom: 0;
+    }
+
+    .item-body footer {
+      flex-wrap: wrap;
+    }
+    p:last-of-type {
+      font-size: var(--font-size-0);
+      color: hsl(var(--tt-pale-blue));
+      margin-left: 0;
+    }
+  }
+
+  header {
+    display: flex;
+    margin-bottom: var(--size-2);
+  }
+  header h2 {
+    font-size: var(--font-size-1);
+    color: white;
+    font-weight: 100;
   }
 
   header svg {
